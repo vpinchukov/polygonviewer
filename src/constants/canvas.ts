@@ -1,0 +1,6 @@
+export const CANVAS = {
+	MIN_ZOOM: 0.1,
+	MAX_ZOOM: 100,
+	SCROLL_SENSITIVITY: 0.0005,
+	GRID: 100,
+}
