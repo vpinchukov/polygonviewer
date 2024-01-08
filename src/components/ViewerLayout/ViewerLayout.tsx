@@ -8,6 +8,8 @@ import { MouseEvent, useCallback, useRef } from 'react'
 import { Mouse } from '../../interface/global'
 import { useDispatch } from 'react-redux'
 import { setMouse } from '../../reducer/ViewerLayout.reducer'
+import { PolygonView } from '../Models/PolygonView'
+import { ViewerUI } from '../ViewerUI/ViewerUI'
 
 export const ViewerLayout = () => {
 	const canvas = useRef<HTMLCanvasElement>(null)
@@ -28,23 +30,27 @@ export const ViewerLayout = () => {
 	}, [canvas, dispatch])
 
 	return (
-		<div className="viewer-container" onMouseMove={handleMouseMove}>
-			<Canvas
-				ref={canvas}
-				frameloop="demand"
-				orthographic
-			>
-				<Bvh firstHitOnly>
-					<OrthographicCamera
-						makeDefault
-						zoom={50}
-						position={[0, 0, 50]}
-						far={10000}
-					/>
-					<ViewerControls />
-					<ViewerGrid />
-				</Bvh>
-			</Canvas>
-		</div>
+		<>
+			<div className="viewer-container" onMouseMove={handleMouseMove}>
+				<Canvas
+					ref={canvas}
+					frameloop="demand"
+					orthographic
+				>
+					<Bvh firstHitOnly>
+						<OrthographicCamera
+							makeDefault
+							zoom={50}
+							position={[0, 0, 50]}
+							far={10000}
+						/>
+						<ViewerControls />
+						<ViewerGrid />
+						<PolygonView />
+					</Bvh>
+				</Canvas>
+			</div>
+			<ViewerUI />
+		</>
 	)
 }
