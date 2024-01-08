@@ -44,7 +44,7 @@ export const ViewerControls = () => {
 	}))
 	const vp = viewport.getCurrentViewport()
 
-	const [isDrag, setIsDrag] = useState(false)
+	const [, setIsDrag] = useState(false)
 	const onStart = useCallback(() => setIsDrag(true), [])
 	const onEnd = useCallback(() => setIsDrag(false), [])
 	const onChange = useCallback(() => {
